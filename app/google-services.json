@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "980260444437",
+    "firebase_url": "https://projectdeepblue.firebaseio.com",
+    "project_id": "projectdeepblue",
+    "storage_bucket": "projectdeepblue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980260444437:android:caf336869f08e3ff56711c",
+        "android_client_info": {
+          "package_name": "com.projectdeepblue.crowdcounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980260444437-klci1ftkuee03ooimqjttr11ann25cig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_DLxLBeGLbLsn_FsKkQapRYQykdig8dU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980260444437-klci1ftkuee03ooimqjttr11ann25cig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
