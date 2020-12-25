@@ -5,29 +5,38 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/theme"
     tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:gravity="center"
+        android:background="@drawable/purple"
         android:orientation="vertical">
         
         <EditText
             android:id="@+id/etUid"
-            android:hint="Username"
+            android:hint="@string/username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FF9800"/>
 
         <EditText
             android:id="@+id/etPwd"
-            android:hint="Password"
+            android:hint="@string/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FF9800"
+            android:inputType="textPassword"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,17 +46,25 @@
 
             <Button
                 android:id="@+id/btReg"
-                android:text="Register"
+                android:text="@string/register"
+                android:background="@drawable/orange"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:textColor="#351868"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
 
             <Button
                 android:id="@+id/btLog"
-                android:text="Login"
+                android:text="@string/login"
+                android:background="@drawable/orange"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:textColor="#351868"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
@@ -58,6 +75,11 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textColor="#351868"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/orange"
+        android:visibility="gone"/>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 if (i.getKey().equals(etUid.getText().toString()))
                                 {
-                                    tvNote.setText("Username Exists");
+                                    tvNote.setText(R.string.exists);
+                                    tvNote.setVisibility(View.VISIBLE);
                                     flag = true;
                                     break;
                                 }
@@ -73,7 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                                 user.setUid(etUid.getText().toString());
                                 user.setPwd(etPwd.getText().toString());
                                 dbUsers.child(user.getUid() + "/Pwd").setValue(user.getPwd());
-                                tvNote.setText("Registration Success!");
+                                tvNote.setText(R.string.success);
+                                tvNote.setVisibility(View.VISIBLE);
                             }
                         }
 
@@ -127,7 +130,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        tvNote.setText("Wrong Username/Password!");
+                        tvNote.setText(R.string.re_enter);
+                        tvNote.setVisibility(View.VISIBLE);
                     }
                 }
 

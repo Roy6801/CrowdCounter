@@ -5,26 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
+    android:background="#351868"
+    android:gravity="center"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/main_toolbar"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:layout_weight="0.15"
-        android:layout_width="match_parent"/>
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/main_viewPager"
+    <ListView
+        android:id="@+id/lvMain"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_margin="5dp"
-        android:layout_height="0dp"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:background="@drawable/light_purple"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/main_tabLayout"
+    <ListView
+        android:id="@+id/lvCamMain"
         android:layout_width="match_parent"
-        android:layout_margin="5dp"
-        android:layout_weight="0.15"
-        android:layout_height="0dp"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:background="@drawable/light_purple"
+        android:visibility="gone"/>
+
 </LinearLayout>
