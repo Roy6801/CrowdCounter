@@ -3,9 +3,7 @@ package com.projectdeepblue.crowdcounter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -17,41 +15,37 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity4 extends AppCompatActivity {
+public class MallActivity2 extends AppCompatActivity {
 
     DatabaseReference dbHist;
-    WebView wvMain4;
-    SharedPreferences sp;
+    WebView wvMall2;
     Intent it;
-
-    String url;
+    String timestamp,url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_mall2);
+
+        wvMall2 = findViewById(R.id.wvMall2);
 
         it = getIntent();
-        sp = getSharedPreferences("server", Context.MODE_PRIVATE);
-        wvMain4 = findViewById(R.id.wvMain4);
+        timestamp = it.getStringExtra("timestamp");
 
-        String timestamp = it.getStringExtra("timestamp");
-        String server = sp.getString("name","");
-
-        dbHist = FirebaseDatabase.getInstance().getReference("History/"+server+"/"+timestamp);
+        dbHist = FirebaseDatabase.getInstance().getReference("Mall/History/"+timestamp);
 
         dbHist.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 url = snapshot.getValue().toString();
-                wvMain4.setWebViewClient(new WebViewClient());
-                wvMain4.getSettings().setJavaScriptEnabled(true);
-                wvMain4.getSettings().setDisplayZoomControls(false);
-                wvMain4.getSettings().setBuiltInZoomControls(true);
-                wvMain4.getSettings().setLoadWithOverviewMode(true);
-                wvMain4.getSettings().setUseWideViewPort(true);
-                wvMain4.loadUrl(url);
+                wvMall2.setWebViewClient(new WebViewClient());
+                wvMall2.getSettings().setJavaScriptEnabled(true);
+                wvMall2.getSettings().setDisplayZoomControls(false);
+                wvMall2.getSettings().setBuiltInZoomControls(true);
+                wvMall2.getSettings().setLoadWithOverviewMode(true);
+                wvMall2.getSettings().setUseWideViewPort(true);
+                wvMall2.loadUrl(url);
             }
 
             @Override
