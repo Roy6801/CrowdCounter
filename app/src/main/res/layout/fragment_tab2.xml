@@ -8,7 +8,7 @@
     android:padding="5dp"
     android:background="#351868"
     android:gravity="center"
-    tools:context=".MainActivity3">
+    tools:context=".Tab2">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         app:cardCornerRadius="30dp">
 
         <WebView
-            android:id="@+id/wvMain3"
+            android:id="@+id/wvTab2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

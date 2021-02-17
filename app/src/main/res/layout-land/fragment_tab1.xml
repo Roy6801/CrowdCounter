@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="5dp"
     android:background="#351868"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".Tab1">
 
     <TextView
-        android:id="@+id/tvMain"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:id="@+id/tvTab1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
         android:layout_margin="5dp"
         android:padding="20dp"
         android:textSize="30sp"
@@ -23,26 +22,12 @@
         android:background="@drawable/light_purple"/>
 
     <ListView
-        android:id="@+id/lvMain"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:id="@+id/lvTab1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="5dp"
         android:padding="20dp"
-        android:background="@drawable/light_purple"/>
-
-    <Button
-        android:id="@+id/btMain"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:layout_margin="5dp"
-        android:padding="20dp"
-        android:text="Crowd History"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="#fab84d"
-        android:gravity="center"
         android:background="@drawable/light_purple"/>
 
 </LinearLayout>
