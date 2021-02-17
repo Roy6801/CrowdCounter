@@ -58,7 +58,7 @@ public class Tab1 extends Fragment {
         dbTotal.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int count = (int) Math.ceil(Integer.parseInt(snapshot.getValue().toString()) * area);
+                int count = (int) Math.ceil(Double.parseDouble(snapshot.getValue().toString()) * area);
                 tvTab1.setText("Count : "+Integer.toString(count));
             }
 

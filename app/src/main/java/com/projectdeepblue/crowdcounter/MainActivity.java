@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,15 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lvMain;
     TextView tvMain;
+    Button btMain;
     ArrayAdapter<String> ad;
-    DatabaseReference dbMall = FirebaseDatabase.getInstance().getReference("Mall");
     DatabaseReference dbServers = FirebaseDatabase.getInstance().getReference("Servers");
-    DatabaseReference dbHosts = FirebaseDatabase.getInstance().getReference("Hosts");
+    DatabaseReference dbMall = FirebaseDatabase.getInstance().getReference("Mall/count");
     SharedPreferences sp;
 
     String server;
-    int serverCount,totalCount;
-    double crowdDensity, mallArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         lvMain = findViewById(R.id.lvMain);
         tvMain = findViewById(R.id.tvMain);
+        btMain = findViewById(R.id.btMain);
+
+        btMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,MallActivity.class));
+            }
+        });
         
         ad = new ArrayAdapter<String>(getApplicationContext(),R.layout.listview_layout);
         lvMain.setAdapter(ad);
@@ -50,13 +57,7 @@ public class MainActivity extends AppCompatActivity {
         dbMall.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot i : snapshot.getChildren())
-                {
-                    if(i.getKey().equals("area"))
-                    {
-                        mallArea = Double.parseDouble(i.getValue().toString());
-                    }
-                }
+                tvMain.setText(snapshot.getValue().toString());
             }
 
             @Override
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mallCount(tvMain, mallArea);
 
         dbServers.addValueEventListener(new ValueEventListener()
         {
@@ -106,33 +106,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot i : snapshot.getChildren())
                 {
-                    if(i.getKey() != "Cameras")
+                    if(!i.getKey().equals("Cameras"))
                     {
                         ed.putString(i.getKey(),i.getValue().toString());
                     }
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-
-    private void mallCount(TextView tvMain,Double mallArea)
-    {
-        dbHosts.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                totalCount = 0;
-                crowdDensity = 0.0;
-                serverCount = (int) snapshot.getChildrenCount();
-                for(DataSnapshot i : snapshot.getChildren())
-                {
-                    crowdDensity = crowdDensity + Double.parseDouble(i.getValue().toString());
-                }
-                totalCount = (int) Math.ceil((mallArea * crowdDensity)/serverCount);
-                tvMain.setText("Count : "+Integer.toString(totalCount));
             }
 
             @Override
