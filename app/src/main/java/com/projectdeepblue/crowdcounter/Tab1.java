@@ -28,6 +28,7 @@ public class Tab1 extends Fragment {
     ArrayAdapter<String> ad;
 
     String camera;
+    double area;
 
     DatabaseReference dbCameras, dbTotal;
     SharedPreferences sp;
@@ -47,8 +48,7 @@ public class Tab1 extends Fragment {
 
         sp = getActivity().getSharedPreferences("server", Context.MODE_PRIVATE);
         String server = sp.getString("name","");
-        Double area = Double.parseDouble(sp.getString("coverage",""));
-
+        area = Double.parseDouble(sp.getString("coverage",""));
         dbTotal = FirebaseDatabase.getInstance().getReference("Hosts/"+server);
         dbCameras = FirebaseDatabase.getInstance().getReference("Servers/"+server+"/Cameras");
 
