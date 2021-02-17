@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         dbMall.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                tvMain.setText(snapshot.getValue().toString());
+                tvMain.setText("Count : "+snapshot.getValue().toString());
             }
 
             @Override
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 server = lvMain.getItemAtPosition(i).toString();
                 ed.putString("name",server);
                 serverInfo(ed);
-                ed.apply();
                 Intent it = new Intent(MainActivity.this,MainActivity2.class);
                 startActivity(it);
             }
@@ -111,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         ed.putString(i.getKey(),i.getValue().toString());
                     }
                 }
+                ed.commit();
             }
 
             @Override
