@@ -15,6 +15,7 @@ public class Tab2 extends Fragment {
 
     WebView wvTab2;
     SharedPreferences sp;
+    String url;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +30,16 @@ public class Tab2 extends Fragment {
         sp = getActivity().getSharedPreferences("server", Context.MODE_PRIVATE);
         wvTab2 = v.findViewById(R.id.wvTab2);
 
-        String url = sp.getString("appURL","")+"/count";
+        url = "";
+
+        if(sp.getString("type","").equals("local"))
+        {
+            url = "http://"+sp.getString("ip","")+":5000/count";
+        }
+        else if(sp.getString("type","").equals("deployed"))
+        {
+            url = sp.getString("appURL","")+"/count";
+        }
 
         wvTab2.setWebViewClient(new WebViewClient());
         wvTab2.getSettings().setJavaScriptEnabled(true);
